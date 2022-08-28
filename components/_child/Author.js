@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function author() {
+export default function Author() {
   return (
-    <div className="author flex py-5">
+    <div className=" flex py-5">
       <Image
         src={"/images/author/author1.jpg"}
         width={60}
