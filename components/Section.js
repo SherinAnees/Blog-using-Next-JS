@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import Author from "./_child/Author";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper";
 
 export default function section1() {
   const bg = {
@@ -12,8 +16,22 @@ export default function section1() {
     <section className="py-16" style={bg}>
       <div className="container mx-auto md:px-20">
         <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
-
-        {Slide()}
+        <Swiper
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
+          className="mySwiper"
+        >
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+          <SwiperSlide>{Slide()}</SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );
