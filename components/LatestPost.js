@@ -3,11 +3,13 @@ import Image from "next/image";
 import Author from "./_child/Author";
 import getPosts from "../library/dataRoutes";
 import fetcher from "../library/fetcher";
+import Spinner from "./_child/Spinner";
+import Error from "./_child/Error";
 function LatestPost() {
   //fetch data using SWR
   const { data, isLoading, isError } = fetcher(`api/posts`);
-  if (isLoading) return <div>Loading....</div>;
-  if (isError) return <div>error</div>;
+  if (isLoading) return <Spinner />;
+  if (isError) return <Error />;
 
   return (
     <section className="container mx-auto md:px-20 py-10">
@@ -24,6 +26,7 @@ function LatestPost() {
 }
 
 export default LatestPost;
+//single post component
 function Post({ data }) {
   const { id, title, published, category, author, img } = data;
   return (
