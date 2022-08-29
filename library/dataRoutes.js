@@ -1,4 +1,4 @@
-const baseURL = "http://www.localhost:3000/api/posts";
+const baseURL = "http://localhost:3000/api/posts";
 
 // endpoint: http://localhost:3000/api/posts
 export default async function getPosts(id) {
