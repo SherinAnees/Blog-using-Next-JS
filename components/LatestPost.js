@@ -68,7 +68,7 @@ function Post({ data }) {
           text by the name of Lorem Ipsum decided to leave for the far World of
           Grammar.
         </p>
-        {data.author ? <Author /> : <></>}
+        {data.author ? <Author {...data.author} /> : <></>}
       </div>
     </div>
   );

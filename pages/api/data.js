@@ -353,7 +353,7 @@ export default {
             `,
       published: "Jun 10,  2022",
       author: {
-        name: "Flying High",
+        name: "Denny",
         img: "/images/author/author1.jpg",
         designation: "CEO and Founder",
       },
@@ -371,7 +371,7 @@ export default {
             `,
       published: "Jun 14,  2022",
       author: {
-        name: "Flying High",
+        name: "John",
         img: "/images/author/author1.jpg",
         designation: "CEO and Founder",
       },

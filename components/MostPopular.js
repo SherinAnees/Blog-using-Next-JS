@@ -16,7 +16,16 @@ function MostPopular() {
       <h1 className="font-bold text-4xl py-12 text-center">Most Popular</h1>
 
       {/* swiper */}
-      <Swiper slidesPerView={2}>
+      <Swiper
+        //slidesPerView={2}
+        // to make slides responcive less than 640px slidesperview=1
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+        }}
+      >
         {data?.map((item) => (
           <SwiperSlide key={item.id}>
             <Post data={item} />
@@ -59,7 +68,7 @@ function Post({ data }) {
           </Link>
         </div>
         <p className="text-gray-500 py-3">{data.description || "Unknown"}</p>
-        {data.author ? <Author /> : <></>}
+        {data.author ? <Author {...data.author} /> : <></>}
       </div>
     </div>
   );

@@ -74,7 +74,7 @@ function Slide({ data }) {
           </Link>
         </div>
         <p className="text-gray-500 py-3">{data.description || "Unknown"}</p>
-        {data.author ? <Author /> : <></>}
+        {data.author ? <Author {...data.author} /> : <></>}
       </div>
     </div>
   );
