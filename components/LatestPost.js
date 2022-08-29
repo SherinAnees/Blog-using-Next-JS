@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import Author from "./_child/Author";
-import getPosts from "../library/dataRoutes";
 import fetcher from "../library/fetcher";
 import Spinner from "./_child/Spinner";
 import Error from "./_child/Error";
@@ -28,14 +27,14 @@ function LatestPost() {
 export default LatestPost;
 //single post component
 function Post({ data }) {
-  const { id, title, published, category, author, img } = data;
+  //const { title, published, category, author, img } = data;
   return (
     <div className="item">
       <div className="images">
         <Link href={"/"}>
           <a>
             <Image
-              src={img || "/"}
+              src={data.img || "/"}
               className="rounded"
               width={500}
               height={350}
@@ -47,19 +46,19 @@ function Post({ data }) {
         <div className="cat">
           <Link href={"/"}>
             <a className="text-orange-600 hover:text-orange-800">
-              {category || "Unknown"}
+              {data.category || "Unknown"}
             </a>
           </Link>
           <Link href={"/"}>
             <a className="text-gray-800 hover:text-gray-600">
-              {published || "Unknown"}
+              -{data.published || "Unknown"}
             </a>
           </Link>
         </div>
         <div className="title">
           <Link href={"/"}>
             <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
-              {title || "Unknown"}
+              {data.title || "Unknown"}
             </a>
           </Link>
         </div>
@@ -69,7 +68,7 @@ function Post({ data }) {
           text by the name of Lorem Ipsum decided to leave for the far World of
           Grammar.
         </p>
-        {author ? <Author /> : <></>}
+        {data.author ? <Author /> : <></>}
       </div>
     </div>
   );
