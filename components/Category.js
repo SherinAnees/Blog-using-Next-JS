@@ -39,7 +39,7 @@ function Post({ data }) {
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
-        <Link href={"/"}>
+        <Link href={`/posts/${data.id}`}>
           <a>
             <Image
               src={data.img || ""}
@@ -52,19 +52,19 @@ function Post({ data }) {
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={"/"}>
+          <Link href={`/posts/${data.id}`}>
             <a className="text-orange-600 hover:text-orange-800">
               {data.category || "No Category"}
             </a>
           </Link>
-          <Link href={"/"}>
+          <Link href={`/posts/${data.id}`}>
             <a className="text-gray-800 hover:text-gray-600">
               - {data.published || ""}
             </a>
           </Link>
         </div>
         <div className="title">
-          <Link href={"/"}>
+          <Link href={`/posts/${data.id}`}>
             <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
               {data.title || "No Title"}
             </a>
