@@ -1,11 +1,30 @@
 import Image from "next/image";
 import React from "react";
+import { SWRConfig } from "swr";
 import Layout from "../../components/Layout";
 import Author from "../../components/_child/Author";
+import Error from "../../components/_child/Error";
 import Related from "../../components/_child/Related";
+import Spinner from "../../components/_child/Spinner";
 import getPosts from "../../library/dataRoutes";
+import fetcher from "../../library/fetcher";
+import { useRouter } from "next/router";
+export default function Page({ fallback }) {
+  const router = useRouter();
+  const { postId } = router.query;
+  const { data, isLoading, isError } = fetcher(`api/posts/${postId}`);
 
-function Page({ title, img, subtitle, description, author }) {
+  if (isLoading) return <Spinner />;
+  if (isError) return <Error />;
+
+  return (
+    <SWRConfig value={{ fallback }}>
+      <Article {...data} />
+    </SWRConfig>
+  );
+}
+
+function Article({ title, img, subtitle, description, author }) {
   return (
     <Layout>
       <section className="container mx-auto md:px-2 py-16 w-1/2">
@@ -35,12 +54,15 @@ function Page({ title, img, subtitle, description, author }) {
   );
 }
 
-export default Page;
 export async function getStaticProps({ params }) {
   const posts = await getPosts(params.postId);
 
   return {
-    props: posts,
+    props: {
+      fallback: {
+        "/api/posts": posts,
+      },
+    },
   };
 }
 
